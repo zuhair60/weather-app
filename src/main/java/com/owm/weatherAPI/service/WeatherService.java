@@ -22,9 +22,7 @@ public class WeatherService {
     private final CacheService cacheService;
 
     private final Logger logger = LoggerFactory.getLogger(WeatherService.class);
-//    private final String WEATHER_API_URL ="https://api.openweathermap.org/data/2.5/weather?q=";   // pused url using externalconfiguration class
-//    private final String API_KEY ="98f1954840580779def0a284ec77ecc6";   / placed inside Constants class in the utility
-
+    
     @Autowired
     public WeatherService(ExternalServiceConfig config, RestTemplate restTemplate, CacheService cacheService) {
         this.config = config;
@@ -33,7 +31,7 @@ public class WeatherService {
     }
 
     public WeatherInformation getWeatherData(String cityName) throws WeatherApiException {
-        String url = config.getOpenWeatherApiUrl() + "?q=" + cityName + "&appid=" + "98f1954840580779def0a284ec77ecc6";
+        String url = config.getOpenWeatherApiUrl() + "?q=" + cityName + "&appid=" + Constants.API_KEY;
        logger.info("Url constructed is : {}",url);
         String cacheKey = "weather_" + cityName;
         WeatherInformation cachedWeather = cacheService.getWeatherFromCache(cacheKey);

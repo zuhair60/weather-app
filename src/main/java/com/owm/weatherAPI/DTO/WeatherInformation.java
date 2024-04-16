@@ -6,7 +6,7 @@ public class WeatherInformation {
     private double windSpeed;
 
     public WeatherInformation() {
-        // Default constructor required for Jackson deserialization
+        
     }
 
     public WeatherInformation(String currentWeather, double temp, double windSpeed) {
